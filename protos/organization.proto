@@ -1,0 +1,56 @@
+syntax = 'proto3';
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+service OrganizationService {
+  rpc GetOrganization(google.protobuf.Empty) returns (Organization) {}
+  rpc GetAccountsInOrganization(google.protobuf.Empty) returns (ListOfAccounts) {}
+  rpc GetAccountInOrganizationBasedOnId(AccountId) returns (Account) {}
+  rpc InviteAccountToOrganization(InviteAccountRequest) returns (InviteAccountResponse) {}
+}
+
+message Organization {
+  string id = 1;
+  string arn = 2;
+  string master_account_arn = 3;
+  string master_account_id = 4;
+  string master_account_email = 5;
+}
+
+message Account {
+  string id = 1;
+  string arn = 2;
+  string email = 3;
+  string name = 4;
+  string status = 5;
+  string joined_method = 6;
+  string joined_timestamp = 7;
+}
+
+message ListOfAccounts {
+  repeated Account accounts = 1;
+}
+
+message AccountId {
+  string account_id = 1;
+}
+
+message InviteAccountRequest {
+  optional string account_id = 1;
+  optional string email_id = 2;
+}
+
+message Pair {
+   string Id = 1;
+   string Type = 2;
+}
+
+message InviteAccountResponse {
+  string id = 1;
+  string arn = 2;
+  repeated Pair parties = 3;
+  string state = 4;
+  string requested_timestamp = 5;
+  string expiration_timestamp = 6;
+  string action = 7;
+}

@@ -1,0 +1,54 @@
+syntax = 'proto3';
+
+service VpcService {
+  rpc CreateVpcWithSubnets(CreateVpcRequest) returns (Vpc);
+  rpc GetVpcBasedOnRegion(RegionAndVpcRequest) returns (ListOfVpcs);
+  rpc GetSubnetsInVpc(RegionAndVpcRequest) returns (ListOfSubnets);
+  rpc CreateSubnet(CreateSubnetRequest) returns (Subnet);
+}
+
+message RegionAndVpcRequest {
+  string region = 1;
+  optional string vpc_id = 2;
+}
+
+message ListOfVpcs {
+  repeated Vpc vpc = 1;
+}
+
+message ListOfSubnets {
+  repeated Subnet subnets = 1;
+}
+
+message Vpc {
+  string id = 1;
+  string cidr_block = 2;
+  string name = 3;
+  string region = 4;
+  repeated Subnet subnets = 5;
+}
+
+message Subnet {
+  string id = 1;
+  string name = 2;
+  string availability_zone = 3;
+  string cidr_block = 4;
+  string vpc_id = 5;
+  string route_table_id = 6;
+}
+
+message CreateVpcRequest {
+  string region = 1;
+  string name = 2;
+  string ip_cidr = 3;
+  repeated CreateSubnetRequest subnets = 4;
+}
+
+message CreateSubnetRequest {
+  string region = 1;
+  string name = 2;
+  string availability_zone = 3;
+  string cidr_block = 4;
+  string vpc_id = 5;
+  string access = 6;
+}

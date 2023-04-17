@@ -1,0 +1,17 @@
+syntax = 'proto3';
+
+service GatewayService {
+  rpc GetTransitGateway(RegionRequest) returns (TransitGateway);
+}
+
+message TransitGateway {
+  string id = 1;
+  string arn = 2;
+  string state = 3;
+  string description = 4;
+  string owner_id = 5;
+  string creation_time = 6;
+}
+message RegionRequest {
+  string region = 1;
+}

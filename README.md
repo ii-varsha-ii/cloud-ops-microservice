@@ -1,6 +1,6 @@
 # Manage AWS cloud services ( in progress )
 
-This project comprises of AWS cloud operations that can be used to create and manage AWS services. 
+This project comprises of functionalities that can be used to create and manage AWS cloud services. 
 
 ## Developer guide:
 Designed in a microservice architecture fashion comes along with gRPC protos to run it as a seperate service. Run the Makefile to generate the protos 

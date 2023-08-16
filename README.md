@@ -1,4 +1,4 @@
-# Manage AWS cloud operations ( in progress )
+# Manage AWS cloud services ( in progress )
 
 This project comprises of AWS cloud operations that can be used to create and manage AWS services. 
 
